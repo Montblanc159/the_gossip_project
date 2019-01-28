@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Commenter le post de <%= gossip.author %></title>
+</head>
+<body>
+  <h1>Commentez le post de
+    <% if gossip.author == "Chuck Norris"
+      com_title = "Chuck Norris (à vos risques et périls)"
+    else
+      com_title = gossip.author
+    end %>
+    <%= com_title %></h1>
+    <form class="" action="/gossip/comment/<%= index %>" method="POST">
+      <input type="text" name="com_author" placeholder="Votre petit nom...">
+      <input type="text" name="com_content" placeholder="Votre commentaire...">
+      <input type="submit">
+    </form>
+  </body>
+  </html>

@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Potin n°<%= index.to_i + 1 %> - <%= gossip.author %></title>
-  </head>
-  <body>
-    <h1>Page de potin</h1>
-    <h2>Potin n°<%= index.to_i + 1 %> de <%= gossip.author %></h2>
-    <p><%= gossip.content %></p>
-    <a href="/gossip/edit/<%= index.to_i %>">Éditer le post</a>
-    <a href="/">Retour à la liste</a>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>Potin n°<%= index.to_i + 1 %> - <%= gossip.author %></title>
+</head>
+<body>
+  <h1>Page de potin</h1>
+  <h2>Potin n°<%= index.to_i + 1 %> de <%= gossip.author %></h2>
+  <p><%= gossip.content %></p>
+  <a href="/gossip/edit/<%= index.to_i %>">Éditer le post</a>
+  <a href="/gossip/comment/<%= index.to_i %>">Commenter le post</a>
+  <a href="/gossip/delete/<%= index.to_i %>">Supprimer le poste</a>
+  <a href="/">Retour à la liste</a>
+  <h3>Commentaires :</h3>
+  <% if Gossip.find(index.to_i).has_comments?%>
+    <% Gossip.find(index.to_i).read_comment.each_with_index do |comment| %>
+    <p><b><%= comment.author %></b></p>
+    <p><%= comment.content %></p>
+    <% end %>
+  <% end %>
+</body>
 </html>

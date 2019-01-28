@@ -7,11 +7,13 @@
   <h2>La liste des potins</h2>
   <% gossips.each_with_index do |gossip, index| %>
   <p>
-    Potin n°<%= index + 1 %> de <%= gossip.author %><br/>
+    <b>Potin n°<%= index + 1 %> de <%= gossip.author %></b><br/>
     <%= gossip.content %>
   </p>
-  <a href="gossip/<%= index %>">Voir le post</a>
-  <a href="gossip/edit/<%= index %>">Éditer le post</a>
+  <a href="/gossip/<%= index %>">Voir le post</a>
+  <a href="/gossip/edit/<%= index %>">Éditer le post</a>
+  <a href="/gossip/comment/<%= index %>">Commenter le post</a>
+  <a href="/gossip/delete/<%= index %>">Supprimer le poste</a>
   <% end %>
   <p><a href="/gossip/new">Poster des potins</a></p>
 </body>
