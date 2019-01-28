@@ -13,4 +13,10 @@ class ApplicationController < Sinatra::Base
     Gossip.new(params["gossip_author"], params["gossip_content"]).save
     redirect '/'
   end
+
+  Gossip.all.each_with_index do |gossip, index|
+    get "/gossip/#{index}" do
+      erb :posts, locals: {gossips: gossip, number: index + 1}
+    end
+  end
 end
