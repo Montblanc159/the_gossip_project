@@ -19,6 +19,16 @@ class Gossip
     return Gossip.all[asked_index.to_i]
   end
 
+  def self.update(at_index, updated_content)
+    all_gossips = Gossip.all
+    all_gossips[at_index].content = updated_content
+    CSV.open('db/gossip.csv', "w") do |csv|
+      all_gossips.each do |gossip|
+        csv << [gossip.author, gossip.content]
+      end
+    end
+  end
+
   def self.all
     all_gossips = []
     csv = CSV.read("db/gossip.csv")

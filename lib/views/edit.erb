@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Edit post n°<%= index + 1 %></title>
+  </head>
+  <body>
+    <h1>Éditer le post n°<%= index + 1 %> de <%= gossip_edit.author %></h1>
+    <form class="" action="/gossip/edit/<%= index %>" method="POST">
+      <p>Potinier : <%= gossip_edit.author %></p>
+      <input type="text" name="gossip_content" value="<%= gossip_edit.content %>"/>
+      <input type="submit"/>
+    </form>
+  </body>
+</html>
