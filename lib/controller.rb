@@ -14,9 +14,9 @@ class ApplicationController < Sinatra::Base
     redirect '/'
   end
 
-  Gossip.all.each_with_index do |gossip, index|
-    get "/gossip/#{index}" do
-      erb :posts, locals: {gossips: gossip, number: index + 1}
-    end
+  get '/gossip/:asked_index' do |asked_index|
+    puts Gossip.all
+    puts Gossip.find(asked_index)
+    erb :posts, locals: {gossip: Gossip.find(asked_index), index: asked_index}
   end
 end

@@ -14,6 +14,11 @@ class Gossip
     end
   end
 
+
+  def self.find(asked_index)
+    return Gossip.all[asked_index.to_i]
+  end
+
   def self.all
     all_gossips = []
     csv = CSV.read("db/gossip.csv")
